@@ -1,6 +1,6 @@
 # Level 0: The Bare Minimum
 
-Level 0 refers to the bare minimum all projects should have when attempting use materials, regardless of sharing. There are four main concepts: making sure your materials run, documenting the materials, recording dependency versions, and a README explaining how to use the materials.
+Level 0 contains to the bare minimum all projects should have when attempting use materials, regardless of sharing. There are four main concepts: making sure your materials run, documenting the materials, recording dependency versions, and a README explaining how to use the materials.
 
 ## Make Sure Your Materials Run!!!!
 
@@ -49,7 +49,7 @@ example_project
 The following python code would remain the same if we ran the code from the `example_project` directory:
 
 ```bash
-example_user:~/example_project$ python src/analysis.py
+example_user@example_machine:~/example_project$ python src/analysis.py
 ```
 
 ```python
@@ -62,7 +62,7 @@ However, it would change if we ran it from the directory `analysis.py` was in:
 
 
 ```bash
-example_user:~/example_project/src$ python analysis.py
+example_user@example_machine:~/example_project/src$ python analysis.py
 ```
 
 ```python
