@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
+{
+    "name": "R (rocker/r-ver base)",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "ghcr.io/rocker-org/devcontainer/r-ver:4.4",
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/python:1": {
+            "installJupyterlab": true,
+            "version": "3.12.4"
+        },
+        "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+            "packages": "github::rstudio/renv@v1.0.7"
+        },
+        "ghcr.io/rocker-org/devcontainer-features/r-rig:1": {
+            "installRMarkdown": true,
+            "installVscDebugger": true,
+            "version": "none",
+            "vscodeRSupport": "full"
+        },
+        "ghcr.io/rocker-org/devcontainer-features/renv-cache:latest": {}
+    },
+    // Remote UID will match container UID
+    "updateRemoteUserUID": true,
+
+    // Configure tool-specific properties.
+    "customizations": {
+        // VSCode extensions
+        "vscode": {
+            "extensions": [
+                "ms-toolsai.jupyter",
+                "mechatroner.rainbow-csv",
+                "george-alisson.html-preview-vscode"
+            ]
+        }
+    }
+    
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "R -q -e 'renv::install()'",
+}
