@@ -22,6 +22,10 @@ Python local environments are created using the `venv` module. All that is neede
 python -m venv <directory>
 ```
 
+```bash
+python -m venv example_venv
+```
+
 ### Using a Local Environment
 
 To use the local environment, you need to call the `activate` script located within `<directory>/bin` for POSIX machines (e.g., Linux, macOS) or `<directory>/Scripts` for Windows machines.
@@ -29,7 +33,7 @@ To use the local environment, you need to call the `activate` script located wit
 ```bash
 # Activate environment (bash/zsh)
 # See https://docs.python.org/3/library/venv.html#how-venvs-work for more info
-source ./env_old/bin/activate # or './docs_env/Scripts/activate' on Windows
+source ./example_venv/bin/activate # or './example_venv/Scripts/activate' on Windows
 ```
 
 Within your terminal, you should notice a difference, specifically the name of the environment prepended onto the terminal text:
@@ -55,7 +59,7 @@ python -m pip show scikit-learn # or pip freeze if version too old
 Once you are done with the local environment, you can run the `deactivate` command to return to the global environment.
 
 ```bash
-deactivate
+source deactivate # or 'deactivate' on Windows
 ```
 
 You will be able to see the difference once again with the environment removed.
@@ -83,7 +87,7 @@ To export the dependencies of your Python local environment, you can run the `pi
 # Make sure you are in the local environment
 # If not, activate the environment
 # See https://docs.python.org/3/library/venv.html#how-venvs-work for more info
-source ./env_old/bin/activate # or './docs_env/Scripts/activate' on Windows
+source ./example_venv/bin/activate # or './example_venv/Scripts/activate' on Windows
 
 # Output requirements to a text file
 python -m pip freeze > requirements.txt
