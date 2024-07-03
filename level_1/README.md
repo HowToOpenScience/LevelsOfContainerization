@@ -104,7 +104,8 @@ python -m pip install -r requirements.txt
 
 TODO
 
-- poetry
+- poetry (curl -sSL https://install.python-poetry.org | python3 -)
+    - poetry completions bash >> ~/.bash_completion
 
 ### Setting up a Build Tool
 
@@ -113,3 +114,7 @@ TODO
 ### Using a Build Tool
 
 TODO
+
+## Disclaimers
+
+While this may handle dependency management for you, thus reducing the burden somewhat, this still has many of the same issues has Level 0. Everything is still being done locally, which while not usually an issue, could cause some amount of headache depending on the machine.
