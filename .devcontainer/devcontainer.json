@@ -22,10 +22,16 @@
         },
         "ghcr.io/rocker-org/devcontainer-features/renv-cache:latest": {}
     },
+    // Run once on creation
+    "onCreateCommand": {
+        // Install poetry for Level 1
+        "install-poetry": "curl -sSL https://install.python-poetry.org | python3 - && poetry completions bash >> ~/.bash_completion"
+    },
+    
     // Remote UID will match container UID
     "updateRemoteUserUID": true,
 
-    // Configure tool-specific properties.
+    // Configure tool-specific properties
     "customizations": {
         // VSCode extensions
         "vscode": {
