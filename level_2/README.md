@@ -188,3 +188,7 @@ To use the toolkit once installed, you need to specify the `--runtime` to be `nv
 ```bash
 docker run --runtime=nvidia --gpus all -itv ${PWD}:/src example_image bash
 ```
+
+## Disclaimers
+
+While Docker solves most of the issues with dependencies, it requires a lot of setup to get it to a usable state by the researcher. One example is that docker containers runs as `root` by default and, without any addditional configuration, they would write files to Linux and macOS machines as the root user. Only within the attached volume, but that is still a problem. Getting things working as a non-root user also requires a good number of changes, depending on how much you choose to rewrite. As such, while writing your own container may be very useful, it may not be worth the time and effort needed to do so.
