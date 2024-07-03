@@ -17,14 +17,14 @@ The only thing you can typically guarantee about your materials is the organizat
 Say we had the following project file structure within `/home/example_user/example_project`:
 
 ```
-root
+example_project
 |-  docs
 |   |-   data.csv
 |-  analysis.py
 ```
 
 ```bash
-example_user:~/example_project$ python analysis.py
+example_user@example_machine:~/example_project$ python analysis.py
 ```
 
 We could read the file like so from `analysis.py`:
@@ -88,7 +88,6 @@ sed -E 's/([A-Za-z_]+)_[0-9_]+\.txt/\1\.txt/'
 
 # Windows PowerShell
 Get-ChildItem *.txt | Rename-Item -NewName { $_.Name -replace '([A-Za-z_]+)_[0-9_]+\.txt)', '$1\.txt'}
-
 ```
 
 Each command is different with potentially differing file extensions, meaning that the files themselves will likely fail across different machines. Therefore, it is generally not recommended to use OS specific implementations to perform operations. Instead, use high level programming languages as they perform these conversions behind the scene.
@@ -117,7 +116,6 @@ for old_path in glob(os.path.join(work_dir, '*.txt')):
 
     # Rename file
     os.rename(old_path, new_path)
-
 ```
 
 This will work regardless of what machine you are working on.
@@ -218,3 +216,7 @@ python main.py
 ## Write a README
 
 READMEs are useful for explaining what the project is. READMEs can either contain or contain links to documentation about the project, how to use the materials, how to setup and contribute to the project, citation information, additional resources, etc. It is generally recommended to have one such that if you or anyone else sees your project, they can understand the broad strokes and get started with using the materials.
+
+## Disclaimers
+
+As this is the bare minimum, every little detail is managed by the researcher. Any assumptions the researcher forgets to check may result in an error for another user. Additionally, operating systems may have dependencies that are necessary for each library, many of which may not be install on other machines. The researcher cannot be expected to know every single thing they have installed on their machine and how it interacts with the tens or hundreds of other pieces of software.
