@@ -27,6 +27,13 @@
         // Install poetry for Level 1
         "install-poetry": "curl -sSL https://install.python-poetry.org | python3 - && poetry completions bash >> ~/.bash_completion"
     },
+    // Run after container is finalized
+    "postCreateCommand": {
+        "setup-level-0-old-deps": "cd ${containerWorkspaceFolder}/level_0/00_dependencies && python3 -m venv env_old && ./env_old/bin/python3 -m pip install -r env_old_requirements.txt",
+        "setup-level-0-new-deps": "cd ${containerWorkspaceFolder}/level_0/00_dependencies && python3 -m venv env_new && ./env_new/bin/python3 -m pip install -r env_new_requirements.txt",
+        "setup-level-0-doc-deps": "cd ${containerWorkspaceFolder}/level_0/01_docs && python3 -m venv env_docs && ./env_docs/bin/python3 -m pip install -r env_docs_requirements.txt",
+        "setup-level-2-docker": "cd ${containerWorkspaceFolder}/level_2 && docker build -t example_image ."
+    },
     
     // Remote UID will match container UID
     "updateRemoteUserUID": true,

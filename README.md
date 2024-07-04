@@ -6,7 +6,7 @@ Levels of Containerization is an example explaining the different levels of comp
 
 ## Setup
 
-This work contains a development container that contains everything you may need. The container can be opened in Visual Studio Code for ease of convenience. Currently, the setup of the internal local environments is not automated, so follow the instructions on the README in each folder to get every level setup. You will need be logged in to Docker to use this configuration as `docker-in-docker` is used to emulated creating a docker container. This can be done in Docker Desktop or through the `docker login` cli.
+This work contains a development container that contains everything you may need. The container can be opened in Visual Studio Code for ease of convenience. Follow any addittional instructions within the README of each folder to get every level setup. You will need be logged in to Docker to use this configuration as `docker-in-docker` is used to emulated creating a docker container. This can be done in Docker Desktop or through the `docker login` cli. The development container is loaded if the text in the terminal says 'Done. Press any key to close the terminal.'
 
 If done manually, this project uses Python 3.12.4, R 4.4, Docker, and Development Containers to setup the process. The level setups are written for bash in Linux; however, links to other operating systems or resources are provided when necessary.
 
