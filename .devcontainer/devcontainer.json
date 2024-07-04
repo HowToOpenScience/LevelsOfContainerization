@@ -45,7 +45,8 @@
             "extensions": [
                 "ms-toolsai.jupyter",
                 "mechatroner.rainbow-csv",
-                "george-alisson.html-preview-vscode"
+                "george-alisson.html-preview-vscode",
+                "tamasfe.even-better-toml"
             ]
         }
     }
