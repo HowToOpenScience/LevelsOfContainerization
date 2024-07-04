@@ -1,10 +1,12 @@
 # Level 3: Development Containers
 
-TODO
+Level 3 contains an example of a Development Container, which is what this example is setup within. A development container provides a simple-to-use wrapper around Docker, allowing for easy and quick setup for an environment that can be shipped to other users.
 
 ## What are Development Containers?
 
-TODO
+Development containers are wrappers around creating and setting up a docker container to run some application. The setup process can be specified in the dev container script, allowing for a one and done setup. Additionally, many of the default images already provides many of the benefits you would need to setup manually if you were to write a docker image from scratch.
+
+In general, every project should be shipped with a dev container to improve the general reproducibility. Even if you choose not to do any additional automation, the environment on its own, along with everything from Level 0, should be enough to piece together what is needed to replicate or reproduce.
 
 ## Creating a Devlopment Container
 
@@ -57,15 +59,41 @@ Features are added using the `features` block. Each key represents a feature reg
     // - 1 will be resolved to 1.6.2
     "ghcr.io/devcontainers/features/python:1": {
         // Configuration info https://github.com/devcontainers/features/tree/main/src/python
-        "version": "3.5.10",
-        "installTools": false
+        "installJupyterlab": true,
+        "version": "3.12.4"
     }
 }
 ```
 
-### Automation With Post Commands
+### Commands
 
-TODO
+A dev container has a lifecycle that indicates how its constructed. During this lifecycle, [commands](https://containers.dev/implementors/json_reference/#lifecycle-scripts) can be run after images and features have loaded to apply any addditional setup the user may need in their environment. All commands are run in a `sh` shell. There are numerous entrypoints, but we will only be mentioning two: `onCreateCommand` and `postCreateCommand`.
+
+`onCreateCommand` is executed when the finalization phase of the container is created, when the container starts for the first time. This is used to install any extra dependencies needed by the development environment. For example, a missing library or a new piece of software. This command may not have access to the current user or the workspace folder, so this should only be used for setup.
+
+`postCreateCommand` is executed as the final step in the finalization process, when the container is first assigned to a user. This is used to handle any setup that should be done locally, for example creating virtual environments or installing dependencies. Generally, most setup processes will go here; however, depending on when the command should be run, you may need a different phase.
+
+These commands can either be a string/array for a single or chained commands. It can also be an object in case you want to run multiple commands in parallel.
+
+```json5
+// In devcontainer.json
+
+
+// Run once on creation
+"onCreateCommand": {
+    // Install poetry
+    "install-poetry": "curl -sSL https://install.python-poetry.org | python3 - && poetry completions bash >> ~/.bash_completion"
+},
+
+// Run after container is finalized
+"postCreateCommand": {
+    // ${containerWorkspaceFolder} gets the current folder within the container
+    "setup-level-0-old-deps": "cd ${containerWorkspaceFolder}/level_0/00_dependencies && python3 -m venv env_old && ./env_old/bin/python3 -m pip install -r env_old_requirements.txt",
+    "setup-level-0-new-deps": "cd ${containerWorkspaceFolder}/level_0/00_dependencies && python3 -m venv env_new && ./env_new/bin/python3 -m pip install -r env_new_requirements.txt",
+    "setup-level-0-doc-deps": "cd ${containerWorkspaceFolder}/level_0/01_docs && python3 -m venv env_docs && ./env_docs/bin/python3 -m pip install -r env_docs_requirements.txt",
+    "setup-level-2-docker": "cd ${containerWorkspaceFolder}/level_2 && docker build -t example_image ."
+},
+```
 
 ### Environment Variables
 
@@ -121,3 +149,7 @@ Once you have created the dev container file in `.devcontainer/devcontainer.json
 For testing purposes, you may want to rebuild the container from scratch to test whether or not you are making any assumptions. This can be done using `Ctrl (Cmd) + Shift + P` to open up the program menu and selecting `Dev Containers: Rebuild and Reopen in Container` or `Dev Containers: Rebuild without Cache and Reopen in Container` if you want to remove any cached image files and redownload them. 
 
 To see what dev containers are currently available, along with any volumes, you can open up the `Remote Explorer` tab on the sidebar (the computer with the `><` symbol), having the tab on top next to the text selected as `Dev Containers`. You can remove containers and volumes here by right clicking and selecting `Remove Container` or `Remove`, respectively.
+
+## Disclaimers
+
+While this does have some of the same issues as Level 2, the main issue is resource management. If your machine is not powerful enough to run a virtual environment, it may be arbitrarily slow to execute. However, this limitation is slowly getting phased out, as most laptops around the average price range can support running a virtual environment without issue.

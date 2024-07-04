@@ -4,7 +4,7 @@ Level 2 contains an example of Docker containers: isolated environments to run s
 
 ## What are Docker Containers?
 
-Containers are lightweight, standalone, isolated environment to run some application. The end result is similar to a virtual machine, although with different reasons and approaches. A container is built off of some image (e.g. usually a Linux operating system) that can have additional commands applied during setup to create the environment.
+Docker containers are lightweight, standalone, isolated environment to run some application. The end result is similar to a virtual machine, although with different reasons and approaches. A container is built off of some image (e.g. usually a Linux operating system) that can have additional commands applied during setup to create the environment.
 
 A container can be used to essentially ship an environment to other users that is more or less guaranteed to run, provided any non-automated proccesses are defined within the provided README. It forces everything that is necessary on the machine to be installed into the container. It is also a good method to see whether you have made any assumptions about what your materials need to run on another machine. As everything is run within Linux, there should be minor differences in operating, as most implementations of research in education technology do not operate on a low enough level.
 
@@ -191,4 +191,4 @@ docker run --runtime=nvidia --gpus all -itv ${PWD}:/src example_image bash
 
 ## Disclaimers
 
-While Docker solves most of the issues with dependencies, it requires a lot of setup to get it to a usable state by the researcher. One example is that docker containers runs as `root` by default and, without any addditional configuration, they would write files to Linux and macOS machines as the root user. Only within the attached volume, but that is still a problem. Getting things working as a non-root user also requires a good number of changes, depending on how much you choose to rewrite. As such, while writing your own container may be very useful, it may not be worth the time and effort needed to do so.
+While Docker solves most of the issues with dependencies, it requires a lot of setup to get it to a usable state by the researcher. One example is that docker containers runs as `root` by default and, without any addditional configuration, they would write files to Linux and macOS machines as the root user. Only within the attached volume, but that is still a problem. Getting things working as a non-root user also requires a good number of changes, depending on how much you choose to rewrite. Docker containers also require you to specify the variables at runtime each time. While there are ways to do this with compose files, it requires even more understanding of how the system works. As such, while writing your own container may be very useful, it may not be worth the time and effort needed to do so. 
