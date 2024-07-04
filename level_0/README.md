@@ -149,14 +149,14 @@ See the example within [`01_docs`](./01_docs/). To setup:
 cd 01_docs
 
 # Setup the virtual environment
-python -m venv docs_env
+python -m venv env_docs
 
 # Activate the environment (bash/zsh)
 # See https://docs.python.org/3/library/venv.html#how-venvs-work for more info
-source ./docs_env/bin/activate # or './docs_env/Scripts/activate' on Windows
+source ./env_docs/bin/activate # or './env_docs/Scripts/activate' on Windows
 
 # Install requirements
-python -m pip install -r docs_env_requirements.txt
+python -m pip install -r env_docs_requirements.txt
 
 # Look at script code
 ```
@@ -198,7 +198,7 @@ python -m venv env_new
 
 # Activate environment (bash/zsh)
 # See https://docs.python.org/3/library/venv.html#how-venvs-work for more info
-source ./env_old/bin/activate # or './docs_env/Scripts/activate' on Windows
+source ./env_old/bin/activate # or './env_old/Scripts/activate' on Windows
 
 # Install requirements
 python -m pip install -r env_old_requirements.txt
@@ -207,7 +207,7 @@ python -m pip install -r env_old_requirements.txt
 python main.py
 
 # Repeat for second environment
-deactivate
+source deactivate
 source ./env_new/bin/activate
 python -m pip install -r env_new_requirements.txt
 python main.py
