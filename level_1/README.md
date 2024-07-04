@@ -102,18 +102,64 @@ python -m pip install -r requirements.txt
 
 ## What are Build Tools?
 
-TODO
+Build tools are meant as a method to handle how a program should compile, run, and build. This typically includes dependency management, which is the main purpose we should use a build tool in research. This automates and simplifies some of the processes of using a local environment; however, if you are not planning on doing anything complicated within the project, either solution will work fine.
 
-- poetry (curl -sSL https://install.python-poetry.org | python3 -)
-    - poetry completions bash >> ~/.bash_completion
+For this example, we will use [Poetry](https://pypi.org/project/poetry-core/) as the build tool, but there are plenty of others that may be more suited for whatever project you are using. You could also choose not to use a build tool as well since their general benefit is a simplified setup without needing to track dependencies outside of when you specify them for installation.
 
 ### Setting up a Build Tool
 
-TODO
+Poetry does not require much setup, only needing three blocks within a `pyproject.toml` file: the main `poetry` block, the `build-system` block, and the `dependencies` block.
+
+The `poetry` and `build-system` block are basically copy-paste from any project. The `poetry` block (or `tool.poetry`) simply contains a reference to [`package-mode`](https://python-poetry.org/docs/basic-usage/#operating-modes) to set the value to false. This tells our project to only use it for dependency management and not for building a release to put on some Python library repository. The [`build-system` block](https://python-poetry.org/docs/pyproject/#poetry-and-pep-517) is meant as a compliance factor to `PEP-517` to indicate Poetry is used to build this project.
+
+```toml
+# Poetry block
+[tool.poetry]
+package-mode = false
+
+# Build system block
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+```
+
+The `dependencies` block (or `tool.poetry.dependencies`) contains the dependencies that this project will use. It is recommended to add dependencies via `poetry add` to avoid having to learn the syntax yourself. You will need to add a manual version for `python` though: `^3.x` where `x` is the minor version of Python you are using.
+
+```bash
+# Add a library to the poetry project
+## It will ask you to specify a version. None specified means latest
+poetry add pandas
+```
+
+```toml
+# Dependencies block
+[tool.poetry.dependencies]
+# Any Python version from 3.12.0 inclusive to 3.13.0 exclusive
+python = "~3.12"
+# Any pandas version from 2.2.2 inclusive to 3.0.0 exclusive
+pandas = "^2.2.2"
+```
 
 ### Using a Build Tool
 
-TODO
+Poetry can be used similar to a local environment but with the commands changed around:
+
+```bash
+# Creates the local environment
+poetry shell
+
+# Installs any dependencies from the Poetry package in the local environment
+poetry install
+
+# Leave the local environment
+## One of the following
+exit
+deactivate
+source deactivate
+
+# If you need to reenter the local environment if it hasn't been cleaned up:
+source $(poetry env info --path)/bin/activate # or '& ((poetry env info --path) + "\Scripts\activate.ps1")' on Windows
+```
 
 ## Disclaimers
 
