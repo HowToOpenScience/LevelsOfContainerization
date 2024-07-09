@@ -10,6 +10,10 @@ This work contains a development container that contains everything you may need
 
 If done manually, this project uses Python 3.12.4, R 4.4, Docker, and Development Containers to setup the process. The level setups are written for bash in Linux; however, links to other operating systems or resources are provided when necessary.
 
+### If Virtual Environments are acting strangely
+
+Virtual environments can act strangely when you're manually running multiple environments at once. This happens when the Python interpreter in the bottom right corner is not set to the global interpreter. If the interpreter is set to a virtual environment, only `source deactivate` can be used to exit all virtual environments. Otherwise; `deactivate` will work. This is an issue with the terminal context bash is given as the terminal is opened in whatever environment specified in the bottom right corner.
+
 ## Disclaimer
 
 This will not make materials completely reproducible. Docker containers, while taggable, do not maintain previous versions, meaning that any changes effect the container as a whole. Some containers are also deleted, such as nvidia's for CUDA, making reproducibility not always possible. The following information is only a tool to help mitigate issues when other people are trying to view and use your work.
