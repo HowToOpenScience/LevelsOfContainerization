@@ -207,7 +207,7 @@ python -m pip install -r env_old_requirements.txt
 python main.py
 
 # Repeat for second environment
-source deactivate
+deactivate # or 'source deactivate' depending on the context
 source ./env_new/bin/activate
 python -m pip install -r env_new_requirements.txt
 python main.py

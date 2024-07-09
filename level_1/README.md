@@ -50,7 +50,7 @@ This indicates that you are within the Python local environment. When you run an
 
 ```bash
 # Download package
-pyhton -m pip install scikit-learn==1.5.0
+python -m pip install scikit-learn==1.5.0
 
 # Check downloaded version
 python -m pip show scikit-learn # or pip freeze if version too old
@@ -59,7 +59,7 @@ python -m pip show scikit-learn # or pip freeze if version too old
 Once you are done with the local environment, you can run the `deactivate` command to return to the global environment.
 
 ```bash
-source deactivate # or 'deactivate' on Windows
+deactivate # or 'source deactivate' depending on context
 ```
 
 You will be able to see the difference once again with the environment removed.
@@ -154,8 +154,7 @@ poetry install
 # Leave the local environment
 ## One of the following
 exit
-deactivate
-source deactivate
+deactivate # or 'source deactivate' in certain contexts
 
 # If you need to reenter the local environment if it hasn't been cleaned up:
 source $(poetry env info --path)/bin/activate # or '& ((poetry env info --path) + "\Scripts\activate.ps1")' on Windows

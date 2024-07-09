@@ -174,7 +174,7 @@ docker run -itv <local_directory>:<remote_directory> <image_name> bash
 
 ```bash
 # Adds a mount to the current directory to the /src directory in the container
-docker run -itv ${PWD}:/src bash
+docker run -itv ${PWD}:/src example_image bash
 ```
 
 ### GPU Access
