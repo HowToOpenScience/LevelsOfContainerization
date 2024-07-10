@@ -6,7 +6,9 @@ Level 3 contains an example of a Development Container, which is what this examp
 
 Development containers are wrappers around creating and setting up a docker container to run some application. The setup process can be specified in the dev container script, allowing for a one and done setup. Additionally, many of the default images already provides many of the benefits you would need to setup manually if you were to write a docker image from scratch.
 
-In general, every project should be shipped with a dev container to improve the general reproducibility. Even if you choose not to do any additional automation, the environment on its own, along with everything from Level 0, should be enough to piece together what is needed to replicate or reproduce.
+In general, every project should be shipped with a dev container to improve reproducibility. Even if you choose not to do any additional automation, the environment on its own, along with everything from Level 0, should be enough to piece together what is needed to replicate or reproduce.
+
+As a disclaimer, Dev containers are a Microsoft product. They can be used outside of Visual Studio Code by installing the [Node CLI package](https://www.npmjs.com/package/@devcontainers/cli); however, if you wish to avoid Microsoft products altogether, you should learn other existing tools like [Docker Compose](https://docs.docker.com/compose/). Dev containers were chosen for this example for their ease of use and setup with minimal knowledge. 
 
 ## Creating a Devlopment Container
 

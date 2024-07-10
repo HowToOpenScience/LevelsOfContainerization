@@ -2,6 +2,8 @@
 
 Levels of Containerization is an example explaining the different levels of complexity when sharing materials. Each level contains its own README with what they represent. This is meant as an aid for understanding how to make materials more usable by others in a simple manner.
 
+**These are recommendations provided by the authors. They do not have to be what you use within your own work. These tools are meant to simplify the process to share your materials in a transferrable manner.**
+
 **All examples are shown in Python, as it is the most common language used across previous proceedings in this conference. However, the concepts can easily be transposed to other languages.**
 
 ## Setup
